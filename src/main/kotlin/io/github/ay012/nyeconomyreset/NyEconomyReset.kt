@@ -6,7 +6,6 @@ import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
 import taboolib.common.platform.Plugin
 import taboolib.common.platform.command.simpleCommand
-import taboolib.common.platform.function.info
 import taboolib.module.configuration.Config
 import taboolib.module.configuration.ConfigFile
 
@@ -21,7 +20,6 @@ object NyEconomyReset : Plugin() {
     private fun reload() {
         simpleCommand("nyeconomyreset", permission = "nyeconomyreset.admin") { _, _ ->
             LoadConfig.loadNyEconomy()
-            info(MySQL.players.joinToString())
         }
     }
 }
