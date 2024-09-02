@@ -1,0 +1,9 @@
+database:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: root
+  database: nyeconomyreset
+
+reset:
+  - '测试货币|00:00'
