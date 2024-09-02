@@ -1,7 +1,9 @@
 package io.github.ay012.nyeconomyreset
 
-import io.github.ay012.nyeconomyreset.config.LoadConfig
+import io.github.ay012.nyeconomyreset.manager.ConfigManager
+import io.github.ay012.nyeconomyreset.manager.DatabaseManager
 import io.github.ay012.nyeconomyreset.database.MySQL
+import io.github.ay012.nyeconomyreset.database.SQLite
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
 import taboolib.common.platform.Plugin
@@ -14,12 +16,18 @@ object NyEconomyReset : Plugin() {
     @Config("config.yml")
     lateinit var config: ConfigFile
 
-    override fun onEnable() { MySQL() }
+    override fun onEnable() {
+        if (config.getBoolean("database.enable")) {
+            DatabaseManager.instance = MySQL()
+        }else {
+            DatabaseManager.instance = SQLite()
+        }
+    }
 
     @Awake(LifeCycle.ENABLE)
     private fun reload() {
         simpleCommand("nyeconomyreset", permission = "nyeconomyreset.admin") { _, _ ->
-            LoadConfig.loadNyEconomy()
+            ConfigManager.loadNyEconomy()
         }
     }
 }

@@ -1,14 +1,13 @@
-package io.github.ay012.nyeconomyreset.config
+package io.github.ay012.nyeconomyreset.manager
 
 import com.mc9y.nyeconomy.api.NyEconomyAPI
 import io.github.ay012.nyeconomyreset.NyEconomyReset.config
-import io.github.ay012.nyeconomyreset.database.MySQL
 import io.github.ay012.nyeconomyreset.util.TimeUtil.getCurrentTime
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
 import taboolib.common.platform.function.submitAsync
 
-object LoadConfig {
+object ConfigManager {
 
 	private val resets = HashMap<String, String>()
 
@@ -33,7 +32,7 @@ object LoadConfig {
 			resets.forEach { (currency, time) ->
 				if (getCurrentTime() !in time) return@forEach
 
-				MySQL.players.forEach { player ->
+				DatabaseManager.players.forEach { player ->
 					NyEconomyAPI.getInstance().reset(currency, player)
 				}
 			}

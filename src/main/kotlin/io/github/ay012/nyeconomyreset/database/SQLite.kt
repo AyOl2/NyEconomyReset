@@ -1,18 +1,19 @@
 package io.github.ay012.nyeconomyreset.database
 
-import io.github.ay012.nyeconomyreset.NyEconomyReset.config
 import io.github.ay012.nyeconomyreset.manager.DatabaseManager
+import taboolib.common.io.newFile
+import taboolib.common.platform.function.getDataFolder
 import taboolib.module.database.*
 
-class MySQL: DatabaseManager() {
+class SQLite: DatabaseManager() {
 
-	private val host = config.getHost("database")
+	private val host = HostSQLite(newFile(getDataFolder(), "data.db"))
 	private val dataSource by lazy { host.createDataSource() }
 	private val table = Table("players", host) {
 		add { id() }
 		add("user") {
-			type(ColumnTypeSQL.VARCHAR, 36) {
-				options(ColumnOptionSQL.UNIQUE_KEY)
+			type(ColumnTypeSQLite.TEXT, 36) {
+				options(ColumnOptionSQLite.UNIQUE)
 			}
 		}
 	}
