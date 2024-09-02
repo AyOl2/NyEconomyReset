@@ -5,6 +5,7 @@ import io.github.ay012.nyeconomyreset.NyEconomyReset.config
 import io.github.ay012.nyeconomyreset.util.TimeUtil.getCurrentTime
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
+import taboolib.common.platform.function.info
 import taboolib.common.platform.function.submitAsync
 
 object ConfigManager {
@@ -22,6 +23,7 @@ object ConfigManager {
 
 				if (parts.size == 2) resets[parts[0]] = parts[1]
 			}
+			info("载入了 ${resets.size} 个需重置的货币")
 		}
 	}
 

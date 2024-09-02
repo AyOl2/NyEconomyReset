@@ -26,8 +26,9 @@ object NyEconomyReset : Plugin() {
 
     @Awake(LifeCycle.ENABLE)
     private fun reload() {
-        simpleCommand("nyeconomyreset", permission = "nyeconomyreset.admin") { _, _ ->
+        simpleCommand("nyeconomyreset", permission = "nyeconomyreset.admin") { sender, _ ->
             ConfigManager.loadNyEconomy()
+            sender.sendMessage("配置文件重载成功!")
         }
     }
 }
