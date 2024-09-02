@@ -15,6 +15,11 @@ taboolib {
             DATABASE,
             EXPANSION_SUBMIT_CHAIN)
     }
+    description {
+        dependencies {
+            name("NyEconomy")
+        }
+    }
     version { taboolib = "6.1.2-beta10" }
 }
 
