@@ -12,8 +12,7 @@ taboolib {
         // 安装模块
         install(UNIVERSAL,
             BUKKIT_ALL,
-            DATABASE,
-            EXPANSION_SUBMIT_CHAIN)
+            DATABASE)
     }
     description {
         dependencies {
