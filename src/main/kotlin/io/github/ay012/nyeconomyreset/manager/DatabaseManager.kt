@@ -1,8 +1,6 @@
 package io.github.ay012.nyeconomyreset.manager
 
 import org.bukkit.event.player.PlayerJoinEvent
-import taboolib.common.LifeCycle
-import taboolib.common.platform.Awake
 import taboolib.common.platform.event.SubscribeEvent
 import taboolib.common.platform.function.submitAsync
 
@@ -18,7 +16,6 @@ abstract class DatabaseManager {
 		// 懒加载变量 在启动方法指定加载模式
 		lateinit var instance: DatabaseManager
 
-		@Awake(LifeCycle.LOAD)
 		fun loadPlayer(){
 			instance.getPlayer().forEach {
 				players.add(it)

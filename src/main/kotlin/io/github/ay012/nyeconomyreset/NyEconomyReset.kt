@@ -22,6 +22,7 @@ object NyEconomyReset : Plugin() {
         }else {
             DatabaseManager.instance = SQLite()
         }
+        DatabaseManager.loadPlayer()
     }
 
     @Awake(LifeCycle.ENABLE)
